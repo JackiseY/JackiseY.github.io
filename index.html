@@ -8,7 +8,8 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#07172e">
-  <meta name="color-scheme" content="dark">
+  <meta name="color-scheme" content="dark light">
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("theme")==="light"?"light":"dark"}catch(_){document.documentElement.dataset.theme="dark"}</script>
   <meta name="author" content="Jingbo Yue">
   <meta name="robots" content="index,follow">
   <meta name="description" content="Jingbo (Jackie) Yue is a Purdue University Computer Engineering researcher focused on computer vision, multimodal AI, and image-based nutrition estimation.">
@@ -210,6 +211,46 @@
       .contact-strip{margin-top:55px;padding:24px;align-items:flex-start;flex-direction:column}.contact-strip h2{font-size:26px}
       footer{flex-direction:column;align-items:flex-start;margin-top:34px}
     }
+
+    /* Theme tokens and restrained motion for an academic portfolio. */
+    :root{--header-bg:rgba(6,20,40,.94);--menu-bg:#102744;--glow-a:rgba(36,94,157,.32);--glow-b:rgba(24,67,123,.29);--glow-c:rgba(21,70,113,.24);--glow-base:linear-gradient(135deg,#07172e,#0a1f37 45%,#061324);--network-line:126,193,243;--network-dot:145,205,241;--link-hover:#fff}
+    :root[data-theme="light"]{color-scheme:light;--bg:#f3f7fa;--bg-deep:#e9f1f5;--panel:rgba(255,255,255,.93);--panel-soft:rgba(255,255,255,.91);--border:rgba(31,76,108,.18);--border-bright:rgba(26,93,133,.32);--text:#172c3f;--muted:#3e5668;--subtle:#506b7f;--accent:#075b85;--gold:#896126;--green:#175a3e;--orange:#905814;--shadow:0 22px 55px rgba(32,64,85,.13);--header-bg:rgba(247,250,251,.94);--menu-bg:#fff;--glow-a:rgba(128,189,218,.24);--glow-b:rgba(183,212,227,.29);--glow-c:rgba(146,195,215,.20);--glow-base:linear-gradient(135deg,#f4f8fa,#e9f2f6 50%,#f6f9fa);--network-line:59,115,148;--network-dot:62,118,150;--link-hover:#03486d}
+    body{transition:background .25s,color .25s}
+    .bg-glow{background:radial-gradient(ellipse 800px 520px at 12% 9%,var(--glow-a),transparent 74%),radial-gradient(ellipse 730px 520px at 86% 22%,var(--glow-b),transparent 73%),radial-gradient(ellipse 920px 720px at 48% 95%,var(--glow-c),transparent 72%),var(--glow-base);transform:translate3d(0,var(--background-shift,0px),0) scale(1.04);will-change:transform}
+    header{background:var(--header-bg)}
+    .header-inner{justify-content:initial}.nav{margin-left:auto}
+    .theme-toggle{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-width:88px;min-height:42px;padding:8px 11px;border:1px solid var(--border-bright);border-radius:9px;background:var(--panel-soft);color:var(--text);font:700 13px/1 'DM Sans',Arial,sans-serif;cursor:pointer;white-space:nowrap}
+    .theme-toggle:hover{border-color:var(--accent)}.theme-toggle:focus-visible{outline:3px solid var(--orange);outline-offset:3px}.theme-icon{font-size:17px;line-height:1}
+    /* The viewport selects a visual focus; document scrolling and section height stay native. */
+    .hero,.section,.contact-strip{transition:opacity .5s ease,filter .5s ease,transform .65s cubic-bezier(.2,.7,.2,1);transform-origin:center center}
+    .section{min-height:min(76svh,760px);display:flex;flex-direction:column;justify-content:center}
+    main.has-focus>.hero:not(.is-focus),main.has-focus>.section:not(.is-focus),main.has-focus>.contact-strip:not(.is-focus){opacity:.48;filter:saturate(.72)}
+    main.has-focus>.is-focus{opacity:1;filter:drop-shadow(0 20px 35px rgba(3,16,35,.13));transform:scale(1.025)}
+    main.has-focus>.is-focus .section-heading h2{color:var(--text);text-shadow:0 0 24px rgba(104,190,235,.15)}
+    main.has-focus>.hero:focus-within,main.has-focus>.section:focus-within,main.has-focus>.contact-strip:focus-within{opacity:1;filter:none}
+    :root[data-theme="light"] a:hover{color:var(--link-hover)}
+    :root[data-theme="light"] .brand,:root[data-theme="light"] .nav>a,:root[data-theme="light"] .nav details>summary,:root[data-theme="light"] .mobile-pop>a{color:var(--text)}
+    :root[data-theme="light"] .brand-mark{color:var(--accent);background:rgba(18,109,153,.08)}
+    :root[data-theme="light"] .dropdown-body,:root[data-theme="light"] .mobile-pop{background:var(--menu-bg)}
+    :root[data-theme="light"] .dropdown-body>strong,:root[data-theme="light"] .future-entry,:root[data-theme="light"] .future-entry small,:root[data-theme="light"] .mobile-pop>span{color:var(--muted)}
+    :root[data-theme="light"] .hero-label,:root[data-theme="light"] .name-extra,:root[data-theme="light"] .hero-role,:root[data-theme="light"] .hero-desc,:root[data-theme="light"] .hero-desc strong,:root[data-theme="light"] .photo-caption,:root[data-theme="light"] .photo-caption strong{color:var(--text)}
+    :root[data-theme="light"] h1 .last,:root[data-theme="light"] .kicker{color:var(--accent)}
+    :root[data-theme="light"] .hero-tags span,:root[data-theme="light"] .tech span{color:var(--accent);background:rgba(20,114,159,.06)}
+    :root[data-theme="light"] .button-main{background:#115f87;color:#fff}:root[data-theme="light"] .button-main:hover{background:#064569;color:#fff}
+    :root[data-theme="light"] .button-ghost{background:rgba(255,255,255,.75);color:var(--accent)}:root[data-theme="light"] .button-ghost:hover{background:#e1f0f6;color:var(--accent)}
+    :root[data-theme="light"] .photo-panel{background:linear-gradient(145deg,#e0edf3,#fff)}
+    :root[data-theme="light"] .heading-note,:root[data-theme="light"] .about-text p,:root[data-theme="light"] .about-text strong,:root[data-theme="light"] .academic-item span,:root[data-theme="light"] .academic-item small,:root[data-theme="light"] .interest-card p,:root[data-theme="light"] .paper p,:root[data-theme="light"] .paper p.venue,:root[data-theme="light"] .project-card p,:root[data-theme="light"] .project-bottom small,:root[data-theme="light"] .skill-card p,:root[data-theme="light"] .social-card strong,:root[data-theme="light"] .social-card small,:root[data-theme="light"] .resource p,:root[data-theme="light"] footer{color:var(--muted)}
+    :root[data-theme="light"] .about-text a,:root[data-theme="light"] .paper h3 a,:root[data-theme="light"] .paper-links a{color:var(--accent)}
+    :root[data-theme="light"] .academic-item .icon,:root[data-theme="light"] .interest-icon,:root[data-theme="light"] .skill-icon,:root[data-theme="light"] .resource-icon{color:var(--accent)}
+    :root[data-theme="light"] .interest-n,:root[data-theme="light"] .paper-number,:root[data-theme="light"] .paper-year,:root[data-theme="light"] .project-type,:root[data-theme="light"] .project-no,:root[data-theme="light"] .about-side>strong,:root[data-theme="light"] .social-arrow{color:var(--subtle)}
+    :root[data-theme="light"] .status-accepted{color:#165636;background:#e5f5eb;border-color:#9bd5af}:root[data-theme="light"] .status-submitted{color:#754a0b;background:#fff2d8;border-color:#e8cb91}
+    :root[data-theme="light"] .paper strong{color:var(--text)}:root[data-theme="light"] .paper-links a{background:#e9f3f8}
+    :root[data-theme="light"] .skill-card,:root[data-theme="light"] .social-card{background:var(--panel-soft)}:root[data-theme="light"] .social-card:hover{background:#eaf4f8}
+    :root[data-theme="light"] .social-card .social-icon{background:#e7eff4;color:var(--accent)}:root[data-theme="light"] .social-card.instagram .social-icon{background:linear-gradient(135deg,#feda75,#fa7e1e 22%,#e83178 52%,#962fbf 76%,#4f5bd5);color:#fff}
+    :root[data-theme="light"] .contact-strip{background:linear-gradient(110deg,#e1f1f6,#f2f8fa);border-color:var(--border-bright)}:root[data-theme="light"] .contact-strip p{color:var(--muted)}:root[data-theme="light"] .contact-strip .button{background:#115f87;color:#fff}
+    @media(max-width:780px){.theme-toggle{margin-right:0}.brand{margin-right:auto}.mobile-menu{margin-left:auto}}
+    @media(max-width:520px){.header-inner{gap:9px}.theme-toggle{min-width:42px;padding:8px}.theme-label{display:none}.brand{font-size:14px}.brand-mark{width:34px;height:34px}.mobile-pop{right:0;max-width:calc(100vw - 28px)}.section{min-height:0}main.has-focus>.is-focus{transform:scale(1.008)}}
+    @media(prefers-reduced-motion:reduce){.bg-glow{transform:none!important;will-change:auto}.hero,.section,.contact-strip{transform:none!important;opacity:1!important;filter:none!important}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
   </style>
 </head>
@@ -244,6 +285,7 @@
 
   <header>
     <div class="shell header-inner">
+      <button class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="false"><span class="theme-icon" aria-hidden="true">☀</span><span class="theme-label">Light</span></button>
       <a class="brand" href="#top" aria-label="Jingbo Yue homepage"><span class="brand-mark">JY</span>Jingbo Yue</a>
       <nav class="nav" aria-label="Primary navigation">
         <a href="#about">About</a><a href="#research">Research</a><a href="#publications">Publications</a><a href="#projects">Projects</a><a href="#skills">Skills</a>
@@ -269,7 +311,7 @@
         <h1 id="hero-title">Jingbo<br><span class="last">Yue.</span></h1>
         <div class="name-extra">Jackie Yue</div>
         <p class="hero-role">Computer Engineering Student &amp; Undergraduate Researcher</p>
-        <p class="hero-desc">I study how visual evidence can make multimodal AI systems more reliable by combining <strong>object-level verification, image segmentation, and geometric consistency</strong> with multimodal reasoning. My work connects <strong>food recognition, visual grounding, and portion estimation</strong> with knowledge-based retrieval and targeted recovery of missed or uncertain food items.</p>
+        <p class="hero-desc">My research focuses on computer vision and multimodal learning, with a particular interest in recognizing individual objects and estimating their physical properties from images through structured, chain-of-thought reasoning. My current work applies these ideas to dietary assessment: identifying the foods in a meal, estimating their portions, and connecting them to nutritional reference data. I develop methods that verify food identities and image regions, recover overlooked items, and address errors that propagate from recognition to nutrition estimation. I am also exploring learning-based approaches that use food appearance, shape, and spatial relationships to improve portion and nutrient estimation across diverse cuisines from the United States, Europe, Oceania, and Asia.</p>
         <div class="hero-tags"><span>Computer Vision</span><span>Pattern Recognition</span><span>Multimodal AI</span></div>
         <div class="hero-actions"><a class="button button-main" href="#publications">Explore publications <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="button button-ghost" href="https://scholar.google.com/citations?user=n-NPHf8AAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar ↗</a></div>
       </div>
@@ -379,6 +421,43 @@
   <footer class="shell"><span>© <span id="copyright-year">2026</span> Jingbo (Jackie) Yue · Purdue University</span><span>Research · Engineering · Beyond &nbsp;·&nbsp; <a href="#top">Back to top ↑</a></span></footer>
   <script>
     (()=>{
+      const toggle=document.querySelector('.theme-toggle');
+      const themeMeta=document.querySelector('meta[name="theme-color"]');
+      function applyTheme(theme){
+        document.documentElement.dataset.theme=theme;
+        toggle.setAttribute('aria-pressed',String(theme==='light'));
+        toggle.setAttribute('aria-label',`Switch to ${theme==='light'?'dark':'light'} mode`);
+        toggle.querySelector('.theme-icon').textContent=theme==='light'?'☾':'☀';
+        toggle.querySelector('.theme-label').textContent=theme==='light'?'Dark':'Light';
+        themeMeta.content=theme==='light'?'#f3f7fa':'#07172e';
+        if(window.redrawStaticNetwork)window.redrawStaticNetwork();
+      }
+      applyTheme(document.documentElement.dataset.theme);
+      toggle.addEventListener('click',()=>{const next=document.documentElement.dataset.theme==='light'?'dark':'light';applyTheme(next);try{localStorage.setItem('theme',next)}catch(_){}});
+      const motion=window.matchMedia('(prefers-reduced-motion: reduce)');
+      const sections=[...document.querySelectorAll('.hero,.section,.contact-strip')];
+      let scrollQueued=false;
+      function updateFocus(){
+        scrollQueued=false;
+        if(motion.matches)return;
+        const center=window.innerHeight*.47;
+        let nearest=null,distance=Infinity;
+        for(const section of sections){
+          const box=section.getBoundingClientRect();
+          if(box.bottom<80||box.top>window.innerHeight)continue;
+          const inside=box.top<=center&&box.bottom>=center;
+          const d=inside?0:Math.min(Math.abs(box.top-center),Math.abs(box.bottom-center));
+          if(d<distance){distance=d;nearest=section;}
+        }
+        if(nearest){document.querySelector('main').classList.add('has-focus');sections.forEach(section=>section.classList.toggle('is-focus',section===nearest));}
+        document.documentElement.style.setProperty('--background-shift',Math.min(42,window.scrollY*.015)+'px');
+      }
+      function queueFocus(){if(motion.matches||scrollQueued)return;scrollQueued=true;requestAnimationFrame(updateFocus)}
+      window.addEventListener('scroll',queueFocus,{passive:true});
+      window.addEventListener('resize',queueFocus,{passive:true});
+      window.addEventListener('hashchange',queueFocus);
+      motion.addEventListener('change',()=>{if(motion.matches){document.querySelector('main').classList.remove('has-focus');sections.forEach(section=>section.classList.remove('is-focus'));document.documentElement.style.removeProperty('--background-shift')}else queueFocus()});
+      queueFocus();
       const year=document.getElementById('copyright-year');if(year)year.textContent=String(new Date().getFullYear());
       for(const menu of document.querySelectorAll('details')){
         document.addEventListener('click',e=>{if(menu.open&&!menu.contains(e.target))menu.open=false});
@@ -386,19 +465,20 @@
         menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.open=false));
       }
       const canvas=document.getElementById('network');const ctx=canvas&&canvas.getContext('2d');if(!ctx)return;
-      const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let reduced=motion.matches;
       let W=0,H=0,dpr=1,nodes=[],frame=0,raf=0;
       let pointer={x:-1000,y:-1000};
       function size(){W=window.innerWidth;H=window.innerHeight;dpr=Math.min(window.devicePixelRatio||1,2);canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);const count=Math.min(72,Math.max(22,Math.floor(W*H/19000)));nodes=Array.from({length:count},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.29,vy:(Math.random()-.5)*.29,r:Math.random()*1.45+.75}));}
-      function draw(){ctx.clearRect(0,0,W,H);const maxDist=W<650?105:155;const maxSq=maxDist*maxDist;
+      function draw(){ctx.clearRect(0,0,W,H);const maxDist=W<650?105:155;const maxSq=maxDist*maxDist;const themeStyle=getComputedStyle(document.documentElement);const lineColor=themeStyle.getPropertyValue('--network-line').trim();const dotColor=themeStyle.getPropertyValue('--network-dot').trim();
         for(let i=0;i<nodes.length;i++){const a=nodes[i];if(!reduced){a.x+=a.vx;a.y+=a.vy;if(a.x<0||a.x>W)a.vx*=-1;if(a.y<0||a.y>H)a.vy*=-1;}
-          for(let j=i+1;j<nodes.length;j++){const b=nodes[j],dx=a.x-b.x,dy=a.y-b.y,ds=dx*dx+dy*dy;if(ds<maxSq){ctx.strokeStyle='rgba(126,193,243,'+(0.13*(1-ds/maxSq)).toFixed(3)+')';ctx.lineWidth=.75;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}}
-          const near=Math.hypot(a.x-pointer.x,a.y-pointer.y)<110;ctx.beginPath();ctx.fillStyle=near?'rgba(142,231,255,.68)':'rgba(145,205,241,.43)';ctx.arc(a.x,a.y,a.r*(near?1.5:1),0,Math.PI*2);ctx.fill();
+          for(let j=i+1;j<nodes.length;j++){const b=nodes[j],dx=a.x-b.x,dy=a.y-b.y,ds=dx*dx+dy*dy;if(ds<maxSq){ctx.strokeStyle='rgba('+lineColor+','+(0.13*(1-ds/maxSq)).toFixed(3)+')';ctx.lineWidth=.75;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}}
+          const near=Math.hypot(a.x-pointer.x,a.y-pointer.y)<110;ctx.beginPath();ctx.fillStyle='rgba('+dotColor+','+(near?'.68':'.43')+')';ctx.arc(a.x,a.y,a.r*(near?1.5:1),0,Math.PI*2);ctx.fill();
         }if(!reduced)raf=window.requestAnimationFrame(draw);}
       window.addEventListener('pointermove',e=>{pointer.x=e.clientX;pointer.y=e.clientY},{passive:true});
       window.addEventListener('resize',()=>{window.cancelAnimationFrame(raf);size();draw()},{passive:true});
       document.addEventListener('visibilitychange',()=>{if(document.hidden){window.cancelAnimationFrame(raf)}else{window.cancelAnimationFrame(raf);draw()}});
-      size();draw();
+      size();draw();if(reduced)window.redrawStaticNetwork=draw;
+      motion.addEventListener('change',()=>{reduced=motion.matches;window.cancelAnimationFrame(raf);window.redrawStaticNetwork=reduced?draw:null;draw()});
     })();
   </script>
 </body>
